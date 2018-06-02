@@ -1,0 +1,10 @@
+.DS_Store
+._*
+node_modules
+dist
+
+# local history
+.history
+
+# text editor files
+.idea
