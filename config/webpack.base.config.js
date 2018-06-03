@@ -5,6 +5,7 @@
 
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const path = require("path")
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
   entry: resolve("src/main.js"),
@@ -22,11 +23,14 @@ module.exports = {
       "@api": resolve("@/api")
     }
   },
+  resolveLoader: {
+    moduleExtensions: ["-loader"]
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        loader: "babel",
         query: {
           presets: ["es2015", "react"]
         },
@@ -34,15 +38,34 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: "html-loader"
+        loader: "html"
       },
       {
         test: /\.css$/,
-        loader: 'css-loader'
+        use: ExtractTextPlugin.extract({
+          fallback: "style",
+          use: [{ loader: "css", options: { sourceMap: true } }]
+        })
+      },
+      {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style",
+          use: [
+            { loader: "css", options: { sourceMap: true } },
+            {
+              loader: "less",
+              options: { sourceMap: true, javascriptEnabled: true }
+            }
+          ]
+        })
       }
     ]
   },
   plugins: [
+    // 提取css
+    new ExtractTextPlugin("style.[hash:4].css"),
+    // 将打包后的资源注入到html文件内
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "index.html",

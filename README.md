@@ -1,1 +1,1 @@
-### this is ucmp-react-ui
+### this is react-ui
