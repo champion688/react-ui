@@ -8,8 +8,7 @@ module.exports = {
   },
   globals: {
     $: false,
-    _: false,
-    angular: false
+    _: false
   },
   rules: {
     "no-console": "error"
