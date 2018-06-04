@@ -1,12 +1,13 @@
 {
   "name": "ucmp-react-ui",
   "version": "1.0.0",
-  "description": "this is ucmp-react-ui",
+  "description": "this is react-ui",
   "main": "dist/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --inline --progress --config config/webpack.dev.config.js",
-    "dev": "webpack --config config/webpack.dev.config.js"
+    "start": "webpack-dev-server --inline --progress --config config/webpack/webpack.dev.conf.js",
+    "dev": "webpack --config config/webpack/webpack.dev.conf.js",
+    "build": "node config/build"
   },
   "keywords": [
     "ucmp",
@@ -27,6 +28,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "bootstrap": "^4.1.1",
+    "chalk": "^2.4.1",
+    "compression-webpack-plugin": "^1.1.11",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
@@ -35,9 +38,17 @@
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "node-notifier": "^5.2.1",
+    "optimize-css-assets-webpack-plugin": "^4.0.2",
+    "ora": "^2.1.0",
     "react-router": "^4.2.0",
+    "rimraf": "^2.6.2",
+    "semver": "^5.5.0",
+    "shelljs": "^0.8.2",
     "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.10.2",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.1",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.2"

@@ -1,11 +1,11 @@
 /**
- * webpack的开发配置
+ * @description webpack的开发配置
  */
 
 'use strict'
 
 const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.config.js')
+const baseWebpackConfig = require('./webpack.base.conf')
 const path = require('path')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
