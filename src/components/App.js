@@ -1,16 +1,23 @@
 import React, { Component } from "react"
-import { message } from "antd"
-import Header from "./layout/Header.js"
-import Footer from "./layout/Footer.js"
+import { Layout } from "antd"
+import Header from "./layout/Header"
+import LeftMenu from "./layout/LeftMenu"
+import Footer from "./layout/Footer"
+
+const { Content } = Layout
 
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <Layout className="h-100">
         <Header />
-        this is content
-        <Footer/>
-      </div>
+        <Layout className="flex-row left-menu-bar">
+          <LeftMenu />
+          <Content />
+        </Layout>
+
+        <Footer />
+      </Layout>
     )
   }
 }

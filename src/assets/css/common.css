@@ -21,3 +21,9 @@
   background: transparent;
 }
 /********* Setting scrollbar style end*********/
+
+/********* Setting leftMenuBar style start*********/
+.left-menu-bar {
+  max-width: 200px;
+}
+/********* Setting leftMenuBar style end*********/
