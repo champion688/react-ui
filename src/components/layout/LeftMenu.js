@@ -1,5 +1,10 @@
+/**
+ * @description 左侧导航菜单组件
+ */
+
 import React, { Component, Fragment } from "react"
-import { Menu, Button, Icon, Tooltip } from "antd"
+import { Menu, Button, Icon } from "antd"
+import { Link } from "react-router-dom"
 import menuMock from "../../mock/menu.mock"
 
 const { SubMenu } = Menu
@@ -10,22 +15,26 @@ const MenuList = menuMock.map(menu => {
       key={menu._id}
       title={
         <span>
-          <i className={menu._icon} />
+          <Icon type={menu._icon} />
           <span>{menu._title}</span>
-          {rootSubmenuKeys.push(menu._id)}
+          <span className="d-none">{rootSubmenuKeys.push(menu._id)}</span>
         </span>
       }
     >
       {Array.isArray(menu._subMenus) &&
         menu._subMenus.map(submenu => (
           <Menu.Item key={submenu._id}>
-            <i className={submenu._icon} />
-            {submenu._title}
+            <Link to={submenu._url}>
+              <Icon type={submenu._icon} />
+              {submenu._title}
+            </Link>
             {Array.isArray(submenu._subMenus) &&
               submenu._subMenus.map(item => (
                 <Menu.Item key={item._id}>
-                  <i className={item._icon} />
-                  {item.title}
+                  <Link to={item._url}>
+                    <Icon type={item._icon} />
+                    {item._title}
+                  </Link>
                 </Menu.Item>
               ))}
           </Menu.Item>
@@ -34,14 +43,17 @@ const MenuList = menuMock.map(menu => {
   )
   let menuItem = (
     <Menu.Item key={menu._id}>
-      <i className={menu._icon} />
-      {menu._title}
+      <Link to={menu._url}>
+        <Icon type={menu._icon} />
+        <span>{menu._title}</span>
+      </Link>
     </Menu.Item>
   )
   return Array.isArray(menu._subMenus) && menu._subMenus.length
     ? submenu
     : menuItem
 })
+
 export default class Footer extends Component {
   constructor(props) {
     super(props)
@@ -52,7 +64,8 @@ export default class Footer extends Component {
     this.toggleCollapsed = this.toggleCollapsed.bind(this)
     this.onOpenChange = this.onOpenChange.bind(this)
   }
-  toggleCollapsed() {
+  toggleCollapsed(e) {
+    e.stopPropagation()
     this.setState({
       collapsed: !this.state.collapsed
     })
@@ -77,19 +90,17 @@ export default class Footer extends Component {
           inlineCollapsed={this.state.collapsed}
           openKeys={this.state.openKeys}
           onOpenChange={this.onOpenChange}
-          className="h-100 overflow-hidden-x"
+          className="h-100 overflow-auto left-menu-bar"
         >
-          <Fragment>
-            <Button
-              type="primary"
-              icon={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-              onClick={this.toggleCollapsed}
-              className="float-right mr-4 mt-2"
-              size="small"
-            />
-          </Fragment>
           {MenuList}
         </Menu>
+        <Button
+          type="primary"
+          icon={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+          onClick={this.toggleCollapsed}
+          className="float-right fold-btn"
+          size="small"
+        />
       </Fragment>
     )
   }
