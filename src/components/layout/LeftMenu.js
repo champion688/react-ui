@@ -5,7 +5,7 @@
 import React, { Component, Fragment } from "react"
 import { Menu, Button, Icon } from "antd"
 import { Link } from "react-router-dom"
-import menuMock from "../../mock/menu.mock"
+import menuMock from "@/mock/menu.mock"
 
 const { SubMenu } = Menu
 const rootSubmenuKeys = []
@@ -24,14 +24,14 @@ const MenuList = menuMock.map(menu => {
       {Array.isArray(menu._subMenus) &&
         menu._subMenus.map(submenu => (
           <Menu.Item key={submenu._id}>
-            <Link to={submenu._url}>
+            <Link to={submenu._url} state={submenu._url}>
               <Icon type={submenu._icon} />
               {submenu._title}
             </Link>
             {Array.isArray(submenu._subMenus) &&
               submenu._subMenus.map(item => (
                 <Menu.Item key={item._id}>
-                  <Link to={item._url}>
+                  <Link to={item._url} state={item._url}>
                     <Icon type={item._icon} />
                     {item._title}
                   </Link>
@@ -43,7 +43,7 @@ const MenuList = menuMock.map(menu => {
   )
   let menuItem = (
     <Menu.Item key={menu._id}>
-      <Link to={menu._url}>
+      <Link to={menu._url} state={menu._url}>
         <Icon type={menu._icon} />
         <span>{menu._title}</span>
       </Link>

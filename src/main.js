@@ -10,7 +10,7 @@ import "antd/lib/style/index.less"
 import "./assets/css/common.css"
 import "./assets/css/iconfont.css"
 import "./assets/less/ucmp.less"
-import style from "./assets/scss/ucmp.scss"
-import RouterConfig from "@/router/"
+import "./assets/scss/ucmp.scss"
+import RouterConfig from "@/router"
 
 ReactDom.render(<RouterConfig />, document.getElementById("app"))

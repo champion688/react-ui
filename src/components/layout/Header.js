@@ -4,9 +4,7 @@
 
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { Menu, Dropdown, Button, Modal, message, Icon } from "antd"
-
-const { confirm } = Modal
+import { Menu, Dropdown, Button, Icon } from "antd"
 
 export default class Header extends Component {
   constructor(props, context) {
