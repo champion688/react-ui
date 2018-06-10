@@ -16,16 +16,6 @@ export default class App extends Component {
           <Layout className="flex-row main-container">
             <LeftMenu />
             <Content>
-              <Breadcrumb className="mt-3 ml-4">
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>
-                  <a href="">Application Center</a>
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                  <a href="">Application List</a>
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>An Application</Breadcrumb.Item>
-              </Breadcrumb>
               {renderRoutes(this.props.route.routes)}
             </Content>
           </Layout>
